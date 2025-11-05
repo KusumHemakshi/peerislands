@@ -1,0 +1,41 @@
+:host {
+  .app-body {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+  }
+  .body {
+    width: 100vw;
+    height: 100vh;
+    background: url('/assets/images/PeerBackground.jpeg');
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .header {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      height: 50px;
+    }
+
+    .peer-title {
+      color: rgb(75 85 99);
+      font-size: 0.75rem;
+      line-height: 1rem;
+      margin-left: 8px;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin: 100px 200px;
+  }
+}

@@ -1,0 +1,20 @@
+<div class="app-body">
+  <div class="header">
+    <div>
+      <img src="../assets/images/PeerAILogo.png" alt="image" />
+    </div>
+    <div>
+      <div class="peer-title">Powered by PeerIslands</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="form-container">
+      <app-shimmer-effect *ngIf="!registrationData.title"></app-shimmer-effect>
+      <app-registration-form
+        *ngIf="registrationData.title"
+        [title]="registrationData.title"
+        [formField]="registrationData.fields"
+      ></app-registration-form>
+    </div>
+  </div>
+</div>

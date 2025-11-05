@@ -1,0 +1,50 @@
+:host {
+  .form-header {
+    h1 {
+      text-align: center;
+    }
+  }
+  .form-body {
+    background: #d9d9d9;
+    position: relative;
+    width: 900px;
+    height: 800px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-group {
+      margin: 50px 0px;
+
+      table {
+        width: 100%;
+        --bs-table-bg: transparent;
+
+        th {
+          .form-label {
+            font-style: italic;
+            font-weight: lighter;
+          }
+        }
+
+        .tr-label {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 20px;
+
+      .form-btn {
+        background: #337ab7;
+        width: 200px;
+        height: 50px;
+      }
+    }
+  }
+}

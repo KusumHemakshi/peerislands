@@ -1,0 +1,93 @@
+<div class="form-body">
+  <div class="form-header">
+    <h1>{{ title() }}</h1>
+  </div>
+  <div class="form-group">
+    <form [formGroup]="userInfo">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let field of formField()">
+            <th class="tr-label">
+              <label [for]="field.name" class="form-label">{{ field.label }}</label>
+            </th>
+            <th>
+              <!-- Input Types: text/date -->
+              <input
+                *ngIf="field.type === 'text' || field.type === 'date'"
+                [type]="field.type"
+                class="form-control"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [placeholder]="field.label"
+                [ngClass]="getInputBoxClass(field.name)"
+                [max]="maxDate"
+              />
+
+              <!-- Input Types: textarea -->
+              <textarea
+                *ngIf="field.type === 'textarea'"
+                class="form-control"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [attr.placeholder]="field.label"
+                [ngClass]="getInputBoxClass(field.name)"
+              ></textarea>
+
+              <!-- Input Types: checkbox -->
+              <div *ngIf="field.type === 'checkbox'">
+                <div *ngFor="let option of concernOptions" class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    [id]="option.key"
+                    [name]="field.name"
+                    [formControlName]="field.name"
+                    [value]="option.key"
+                    [ngClass]="getInputBoxClass(field.name)"
+                  />
+                  <label class="form-label" [for]="option.key">
+                    {{ option.value }}
+                  </label>
+                </div>
+              </div>
+
+              <!-- Input Types: multiselect/dropdown -->
+              <ng-multiselect-dropdown
+                *ngIf="field.type === 'multiselect' || field.type === 'dropdown'"
+                [placeholder]="field.label"
+                [id]="field.name"
+                [formControlName]="field.name"
+                [data]="field.options || []"
+                [settings]="getDropdownSettings(field.type)"
+                [ngClass]="getInputBoxClass(field.name)"
+              >
+              </ng-multiselect-dropdown>
+
+              <!-- Valid/Invalid Message -->
+              <div [id]="field.name" [ngClass]="getWarningMessageClass(field.name)">
+                {{ field.validation?.message }}
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="form-footer">
+    <div>
+      <button type="submit" class="btn btn-primary btn-lg form-btn" (click)="showDetails()">
+        Submit
+      </button>
+    </div>
+    <div>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg form-btn"
+        (click)="resetForm()"
+        [disabled]="!userInfo.dirty"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
